@@ -541,7 +541,7 @@ export default function Discover() {
           style={{
             padding: "24px 24px 0",
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
             gap: "20px",
           }}
         >

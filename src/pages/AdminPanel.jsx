@@ -892,7 +892,7 @@ function MeetupAdminCard({ meetup, onRefresh, onScanClick }) {
                     No registrations yet.
                   </div>
                 ) : (
-                  <table
+                  <div style={{ overflowX: "auto", width: "100%", maxWidth: "100vw" }}><table
                     style={{
                       width: "100%",
                       borderCollapse: "collapse",
@@ -1274,7 +1274,7 @@ function MeetupAdminCard({ meetup, onRefresh, onScanClick }) {
                         );
                       })}
                     </tbody>
-                  </table>
+                  </table></div>
                 )}
               </div>
             )}
