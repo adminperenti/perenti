@@ -757,7 +757,7 @@ function MeetupAdminCard({ meetup, onRefresh, onScanClick }) {
                 >
                   <span>📅 {meetup.date}</span>
                   <span>⏰ {meetup.time}</span>
-                  <span>📍 {meetup.venue}</span>
+                  <span>📍 {(typeof meetup.venue === "object" ? meetup.venue.name : meetup.venue)}</span>
                 </div>
               </div>
               <div style={{ display: "flex", gap: 8, alignItems: "center" }}>

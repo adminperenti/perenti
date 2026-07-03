@@ -320,7 +320,7 @@ export default function Landing({ onLogin, theme, toggleTheme }) {
                       style={{ display: "flex", alignItems: "center", gap: 8 }}
                     >
                       <MapPin size={13} color="var(--primary)" />{" "}
-                      {nextMeetup.venue}
+                      {(typeof nextMeetup.venue === "object" ? nextMeetup.venue.name : nextMeetup.venue)}
                     </span>
                     <span
                       style={{ display: "flex", alignItems: "center", gap: 8 }}

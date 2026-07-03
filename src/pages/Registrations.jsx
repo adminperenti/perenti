@@ -516,7 +516,7 @@ export default function Registrations({ currentUser }) {
                                 flexShrink: 0,
                               }}
                             />
-                            <span>{m.venue}</span>
+                            <span>{(typeof m.venue === "object" ? m.venue.name : m.venue)}</span>
                           </div>
                         )}
                         <div
@@ -1077,7 +1077,7 @@ export default function Registrations({ currentUser }) {
                               marginTop: 2,
                             }}
                           />
-                          <span>{m.venue}</span>
+                          <span>{(typeof m.venue === "object" ? m.venue.name : m.venue)}</span>
                         </div>
                       </div>
 

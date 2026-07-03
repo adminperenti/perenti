@@ -239,7 +239,7 @@ function PassModal({ ticket, meetup, onClose }) {
               >
                 <span>📅 {meetup.date}</span>
                 <span>⏰ {meetup.time}</span>
-                <span>📍 {meetup.venue}</span>
+                <span>📍 {(typeof meetup.venue === "object" ? meetup.venue.name : meetup.venue)}</span>
               </div>
             </div>
 
@@ -1939,7 +1939,7 @@ export default function MeetupDetail() {
 
   const handleShare = (action) => {
     const url = window.location.href;
-    const text = `Join me at ${selected?.title} — ${selected?.date} @ ${selected?.venue}!`;
+    const text = `Join me at ${selected?.title} — ${selected?.date} @ ${typeof selected?.venue === "object" ? selected?.venue?.name : selected?.venue}!`;
     if (action === "copy") {
       navigator.clipboard.writeText(url);
       setCopied(true);
@@ -2220,7 +2220,7 @@ export default function MeetupDetail() {
                 {[
                   { icon: Calendar, label: "Date", value: selected.date },
                   { icon: Clock, label: "Time", value: selected.time },
-                  { icon: MapPin, label: "Venue", value: selected.venue },
+                  { icon: MapPin, label: "Venue", value: (typeof selected.venue === "object" ? selected.venue.name : selected.venue) },
                 ].map(({ icon: Icon, label, value }) => (
                   <div
                     key={label}

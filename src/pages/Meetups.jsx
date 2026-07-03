@@ -307,7 +307,7 @@ export default function Meetups() {
                                 textOverflow: "ellipsis",
                               }}
                             >
-                              {meetup.venue}
+                              {(typeof meetup.venue === "object" ? meetup.venue.name : meetup.venue)}
                             </span>
 
                             {/* Absolutely positioned 'Completed' text perfectly aligned with location baseline, perfectly centered under the Orb */}

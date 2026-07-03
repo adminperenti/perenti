@@ -485,7 +485,7 @@ export default function Discover() {
                             fontWeight: 500,
                           }}
                         >
-                          {upcomingMeetup.venue}
+                          {(typeof upcomingMeetup.venue === "object" ? upcomingMeetup.venue.name : upcomingMeetup.venue)}
                         </span>
                       </div>
                     </>
