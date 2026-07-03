@@ -315,7 +315,7 @@ export default function Discover() {
                         marginBottom: 4,
                       }}
                     >
-                      {upcomingMeetup
+                      {upcomingMeetup && upcomingMeetup.date
                         ? (() => {
                             const parts = upcomingMeetup.date.split(",");
                             if (parts.length > 1) {
@@ -335,7 +335,7 @@ export default function Discover() {
                         fontFamily: "var(--font-display)",
                       }}
                     >
-                      {upcomingMeetup
+                      {upcomingMeetup && upcomingMeetup.date
                         ? upcomingMeetup.date.match(/\d+/)?.[0] || "📅"
                         : "📅"}
                     </div>

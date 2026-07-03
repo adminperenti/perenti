@@ -261,7 +261,7 @@ export default function Live({ currentUser }) {
                 style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}
               >
                 This section will unlock at{" "}
-                {activeMeetup.time.split(/[-–]/)[0].trim()} on the day of the
+                {activeMeetup.time ? activeMeetup.time.split(/[-–]/)[0].trim() : ""} on the day of the
                 event.
               </div>
               <div

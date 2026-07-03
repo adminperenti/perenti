@@ -78,7 +78,7 @@ export async function sendEmailJSTicket(email, ticketIds, config, event = null) 
 
   const templateParams = {
     to_email: email,
-    to_name: email.split('@')[0],
+    to_name: email ? email.split('@')[0] : 'Attendee',
     ticket_ids: ticketIds.join(', '),
     quantity: ticketIds.length,
     event_name: eventName,

@@ -29,7 +29,7 @@ export function MemberCardVertical({ member }) {
           {member.profession}
         </div>
         <div className="member-area" style={{ marginTop: 2 }}>
-          {member.area.split(",")[0]}
+          {member.area ? member.area.split(",")[0] : ""}
         </div>
       </div>
       <div
