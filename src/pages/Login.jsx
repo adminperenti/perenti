@@ -100,10 +100,13 @@ export default function Login({ onLogin }) {
     <div
       style={{
         height: "100dvh",
+        width: "100%",
+        maxWidth: "100vw",
         background: "var(--bg)",
         display: "flex",
         flexDirection: "column",
         overflowY: "auto",
+        overflowX: "hidden",
         position: "relative",
       }}
     >
@@ -158,8 +161,9 @@ export default function Login({ onLogin }) {
         style={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "420px 1fr",
+          gridTemplateColumns: "minmax(320px, 420px) minmax(0, 1fr)",
           minHeight: 0,
+          width: "100%",
         }}
       >
         {/* Left — Auth Form */}
@@ -170,6 +174,8 @@ export default function Login({ onLogin }) {
             display: "flex",
             flexDirection: "column",
             borderRight: "1px solid var(--border)",
+            minWidth: 0,
+            width: "100%",
           }}
         >
           <div
@@ -517,6 +523,8 @@ export default function Login({ onLogin }) {
           userSelect: "none",
           pointerEvents: "none",
           marginTop: "auto",
+          width: "100%",
+          maxWidth: "100vw",
         }}
       >
         <span
