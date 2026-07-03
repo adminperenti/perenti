@@ -176,7 +176,7 @@ function MainLayout({
 }
 
 export default function App() {
-  const { session, logout, loading: authLoading } = useAuth();
+  const { session, setSession: setCurrentUser, logout, loading: authLoading } = useAuth();
   const isLoggedIn = !!session;
   const currentUser = session;
 

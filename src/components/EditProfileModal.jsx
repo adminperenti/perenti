@@ -96,7 +96,7 @@ export default function EditProfileModal({
       onComplete(formattedMember);
     } catch (err) {
       setError(
-        "Failed to update profile. Please try again. Note: This requires the backend to support PUT /members/:email",
+        `Failed to update profile: ${err.message}`
       );
       setLoading(false);
     }
