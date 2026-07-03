@@ -41,7 +41,17 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const isAdmin = session?.role === 'admin';
+  const ADMIN_EMAILS = [
+    "admin@perenti.com",
+    "sreemadhav@gmail.com",
+    "madhav@ebc.com",
+    "shiva24.santosh@gmail.com",
+  ];
+
+  const isAdmin = 
+    session?.role === 'admin' || 
+    (session?.email && ADMIN_EMAILS.includes(session.email)) ||
+    (session?.email && session.email.includes("@Perenti"));
   const isUser = session?.role === 'user';
 
   return (
