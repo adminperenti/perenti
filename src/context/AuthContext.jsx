@@ -1,36 +1,51 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../config/firebase';
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [session, setSession] = useState(() => {
+  const [session, setSession] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          const docRef = doc(db, 'users', user.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setSession({ uid: user.uid, email: user.email, ...docSnap.data() });
+          } else {
+            setSession({ uid: user.uid, email: user.email });
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          setSession({ uid: user.uid, email: user.email });
+        }
+      } else {
+        setSession(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const logout = async () => {
     try {
-      const stored = localStorage.getItem('currentUser');
-      return stored ? JSON.parse(stored) : null;
-    } catch (e) {
-      console.error("Error parsing session:", e);
-      try { localStorage.removeItem('currentUser'); } catch (_) {}
-      return null;
+      await signOut(auth);
+    } catch (err) {
+      console.error("Error signing out:", err);
     }
-  });
-
-  const login = useCallback((email, role, firstName = '', lastName = '') => {
-    const displayName = [firstName, lastName].filter(Boolean).join(' ') || email;
-    const user = { email, role, firstName, lastName, displayName };
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    setSession(user);
-  }, []);
-
-  const logout = useCallback(() => {
-    localStorage.removeItem('currentUser');
-    setSession(null);
-  }, []);
+  };
 
   const isAdmin = session?.role === 'admin';
   const isUser = session?.role === 'user';
 
   return (
-    <AuthContext.Provider value={{ session, login, logout, isAdmin, isUser }}>
+    <AuthContext.Provider value={{ session, logout, isAdmin, isUser, loading }}>
       {children}
     </AuthContext.Provider>
   );

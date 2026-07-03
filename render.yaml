@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ebc-app
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run server
+    envVars:
+      - key: VITE_API_URL
+        value: "https://your-render-app-url.onrender.com"
+      - key: PORT
+        value: "3001"

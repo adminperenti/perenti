@@ -11,5 +11,17 @@ export default defineConfig({
         changeOrigin: true,
       }
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          firebase: ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/storage'],
+          lottie: ['lottie-web']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000
   }
 })

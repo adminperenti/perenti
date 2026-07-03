@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="footer-container">
         <div className="footer-top">
           <div className="footer-brand-col">
-            <span className="brand-name" style={{fontSize: '1.1rem'}}>perenti</span>
+            <span className="brand-name" style={{ fontSize: '1.1rem' }}>perenti</span>
             <p className="footer-brand-desc">Smart Events, Seamless Outcomes. Simplifying how communities connect and grow.</p>
           </div>
           <div className="footer-links-col">

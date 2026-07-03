@@ -46,9 +46,9 @@ export default function RegistrationSummaryModal({
   };
 
   const handleApplyPromo = () => {
-    if (promoCode.trim().toUpperCase() === 'EBC10') {
+    if (promoCode.trim().toUpperCase() === 'Perenti10') {
       setPromoApplied(true);
-      setPromoMessage('✅ Promo code "EBC10" applied! 10% off.');
+      setPromoMessage('✅ Promo code "Perenti10" applied! 10% off.');
     } else {
       setPromoApplied(false);
       setPromoMessage('❌ Invalid promo code.');

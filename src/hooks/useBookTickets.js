@@ -34,14 +34,16 @@ export function useBookTickets() {
       const ticketId = `PRNT-${cleanEventName}-${randomSuffix}-${i + 1}`;
 
       const ticketData = {
-        email: email,
+        email: email, // keep for legacy code just in case
+        user_email: email, // add what AdminPanel expects
         qty: qty,
         status: 'unused',
         payment: paymentMethod,
         timestamp: timestamp,
+        created_at: new Date().toISOString(), // AdminPanel sometimes sorts by this
         approval: 'approved',
         answers: answers,
-        ...(eventId ? { eventId } : {}),
+        ...(eventId ? { eventId, meetup_id: eventId } : {}),
         ...(resolvedEventName ? { eventName: resolvedEventName } : {}),
         ...(razorpayPaymentId ? { razorpayPaymentId } : {}),
       };
