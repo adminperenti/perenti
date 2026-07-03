@@ -1,0 +1,37 @@
+{
+  "name": "perenti-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Perenti - Smart Events, Seamless Outcomes",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server/server.js"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase": "^10.9.0",
+    "firebase-admin": "^14.1.0",
+    "framer-motion": "^12.42.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "jsqr": "^1.4.0",
+    "puppeteer": "^25.1.0",
+    "razorpay": "^2.9.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^7.6.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^6.3.5"
+  }
+}
